@@ -1,0 +1,42 @@
+
+server:
+  port: 9876
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 1234
+
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: false
+        use_sql_comments: false
+        ddl-auto: create
+        generate-ddl: true
+
+#p6spy
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+      multiline: true
+
+logging:
+  level:
+    root: info
+    org.springframework.jdbc.datasource: debug
+#  file:
+#    name: logs/jpaTransaction.log
+#  logback:
+#    rollingpolicy:
+#      max-file-size: 10MB
+#      max-history: 10
+#      file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}-%i.gz
+
+consent:
+  timestamp-pattern: yyyy-MM-dd HH:mm:ss
